@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import './artistInfo.css';
 
 export default function ArtistInfo() {
@@ -22,6 +22,20 @@ export default function ArtistInfo() {
         setTopTracks(tracksArray);
     }
 
+    let handleArtist = (artistData) => {
+        let artistInfo = artistData;
+        let genreArray = [];
+        artistData.genres.forEach(genre => {
+            genreArray.push(
+                <li key={genre}>
+                    {genre}
+                </li>
+            );
+        });
+        artistInfo.genres = genreArray;
+        setArtistInfo(artistInfo);
+    }
+
     useEffect(() => {
         let access_token = '';
         let artist_id = '';
@@ -40,7 +54,7 @@ export default function ArtistInfo() {
               'Authorization' : 'Bearer ' + access_token,
               'Content-Type' : 'application/json'
             }
-        }).then(res => setArtistInfo(res.data))
+        }).then(res => handleArtist(res.data))
         .catch(err => console.log(err));
 
         axios.get(`https://api.spotify.com/v1/artists/${artist_id}/top-tracks?market=US`, {
@@ -54,11 +68,15 @@ export default function ArtistInfo() {
     
     return (
         <div className='artist-info'>
-            <h1>Name: {artistInfo.name}</h1>
+            <h1>{artistInfo.name}</h1>
             <h2>Genres: </h2>
-            {artistInfo.genres}
+            <ul>
+                {artistInfo.genres}
+            </ul>
             <h2>Popularity: </h2>
-            {artistInfo.popularity}
+            <div id="popularity-bar-container">
+                {artistInfo.popularity && <div id="popularity-bar" style={{ width: (artistInfo.popularity * 2.5) }}></div>}
+            </div>
             <h2>Top Tracks: </h2>
             <div id='top-tracks-container'>
                 {topTracks}

@@ -6,7 +6,7 @@ import './App.css';
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { artists: [] };
+    this.state = { artists: null };
     const params = this.getHashParams();
     const access_token = params.access_token;
     if (access_token) {

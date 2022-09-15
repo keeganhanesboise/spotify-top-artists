@@ -1,3 +1,7 @@
+body {
+  font-family: 'Inter', sans-serif;
+}
+
 .App {
   text-align: center;
   display: flex;
@@ -12,13 +16,16 @@
   width: 1000px;
 }
 
-.artist-container {
+.artist-container, .track-container {
   position: relative;
   display: flex;
   width: 190px;
   height: 190px;
   margin: 5px 5px 5px 5px;
   overflow: hidden;
+}
+
+.artist-container {
   cursor: pointer;
 }
 
@@ -26,7 +33,7 @@
   background-color: rgb(0, 0, 0, 0);
 }
 
-.artist-name {
+.artist-name, .track-name {
   position: absolute;
   bottom: 0px;
   width: 100%;
