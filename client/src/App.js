@@ -18,6 +18,7 @@ class App extends React.Component {
     artists.map((artist) => {
       artistArray.push(
         <div className='artist-container' key={artist.name}>
+          <div className='img-overlay'/>
           <img src={artist.images[0].url} alt='Top Band/Artist' className='artist-image'></img>
           <div className='artist-name'>{artist.name}</div>
         </div>
@@ -50,7 +51,8 @@ class App extends React.Component {
   render() {
     return (
       <div className='App'>
-        <a href='http://localhost:8888'>Login to Spotify</a>
+        {!this.state.artists && <a href='http://localhost:8888'>Login to Spotify</a>}
+        {this.state.artists && <h1>Your Top 20 Artists</h1>}
         <div id="artist-grid">
           {this.state.artists}
         </div>
