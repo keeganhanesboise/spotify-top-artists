@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './App.css';
 
 class App extends React.Component {
@@ -16,12 +17,15 @@ class App extends React.Component {
   setTopArtists(artists, access_token) {
     let artistArray = [];
     artists.map((artist) => {
+      let artistUrl = 'access_token=' + access_token + '&artist_id=' + artist.id;
       artistArray.push(
-        <div className='artist-container' key={artist.name}>
-          <div className='img-overlay'/>
-          <img src={artist.images[0].url} alt='Top Band/Artist' className='artist-image'></img>
-          <div className='artist-name'>{artist.name}</div>
-        </div>
+        <Link to={artistUrl} key={artist.name}>
+          <div className='artist-container' key={artist.name}>
+            <div className='img-overlay'/>
+            <img src={artist.images[0].url} alt='Top Band/Artist' className='artist-image'></img>
+            <div className='artist-name'>{artist.name}</div>
+          </div>
+        </Link>
       );
     })
     this.setState({artists: artistArray});
