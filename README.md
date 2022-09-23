@@ -49,6 +49,8 @@ $ node app.js
 
 ## Top 20 Artists:
 
+<img src="imgs\Screenshot 2022-09-22 175248.png"></img>
+
 <br>
 
 ## Artist page:
