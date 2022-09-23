@@ -1,5 +1,5 @@
 # Spotify Top Artists
-Spotify Top Artists allows spotify users to log into their Spotify account and view, as well as learn more about, their top artists. By clicking each artists you can see the genres they fall under, popularity relative to other artists and their top 10 tracks. 
+Spotify Top Artists allows users to log into their Spotify account and learn more about their top 20 artists. Each artist has their own individual page with what genres they fall under, popularity relative to other artists and their top 10 tracks.
 
 # How To Use
 ## Get Spotify Client ID and Secret
